@@ -1,3 +1,46 @@
+# 🎯 Max-Min with Divide & Conquer (DAA Practicals)
+
+> “Find both the largest and the smallest element in an array in _fewer_ comparisons!”  
+
+---
+
+![DAA Banner](https://img.shields.io/badge/DAA-Practicals-blue)  
+![Divide%20%26%20Conquer](https://img.shields.io/badge/Technique-Divide%20%26%20Conquer-green)
+
+---
+
+## 📦 Algorithm Overview
+
+1. 🔹 **Single element** → it’s both `max` & `min`.  
+2. 🔹 **Two elements** → compare directly, assign `max`/`min`.  
+3. 🔹 **More than two elements** →  
+   - Split into **Left** and **Right** halves  
+   - Recurse to find `(max, min)` in each half  
+   - Merge:  
+     ```text
+     final.max = max(left.max, right.max)
+     final.min = min(left.min, right.min)
+     ```
+
+---
+
+<details>
+<summary>🧠 Dry‑Run Example (click to expand)</summary>
+
+**Array:** `[20, 5, 15, 30, 10, 50, 2]`
+
+                [20, 5, 15, 30, 10, 50, 2]
+                       /            \
+          [20, 5, 15]                [30, 10, 50, 2]
+           /      \                   /           \
+        [20]   [5, 15]           [30, 10]       [50, 2]
+         ↓       ↓                  ↓             ↓
+       (20,20) (15,5)            (30,10)       (50,2)
+         ↓       ↓                  ↓             ↓
+       (20, 5)                 (50, 2)
+                 \               /
+                  \             /
+                  → **(50, 2)** ←
 
 | Stage                    | Max  | Min |
 |--------------------------|------|-----|
@@ -52,3 +95,9 @@ int main() {
     cout << "❄️ Minimum: " << result.min << "\n";
     return 0;
 }
+Input:  
+  Array = [20, 5, 15, 30, 10, 50, 2]
+
+Output:
+  🔥 Maximum element: 50  
+  ❄️ Minimum element: 2
